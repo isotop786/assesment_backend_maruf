@@ -18,7 +18,7 @@ const connectDB = require('./db')
 connectDB();
 
 // middleware
-app.use(cors())
+app.use(cors({origin:'*'}));
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.json())

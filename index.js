@@ -9,8 +9,16 @@ const router = require('./router')
 const expressValidator = require('express-validator')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-app.use(cors({credentials:true, origin:true}))
-app.options('*',cors())
+// app.use(cors({credentials:true, origin:true}))
+// app.options('*',cors())
+
+const corsConfig = {
+    origin: true,
+    credentials: true,
+  };
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig));
+
 
 
 const connectDB = require('./db')

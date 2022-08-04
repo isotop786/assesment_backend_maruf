@@ -9,6 +9,7 @@ const router = require('./router')
 const expressValidator = require('express-validator')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+app.use(cors({credentials:true, origin:true}))
 app.options('*',cors())
 
 
@@ -18,7 +19,6 @@ const connectDB = require('./db')
 connectDB();
 
 // middleware
-app.use(cors({origin:'*'}));
 app.use(express.json())
 app.use(cookieParser())
 app.use(bodyParser.json())

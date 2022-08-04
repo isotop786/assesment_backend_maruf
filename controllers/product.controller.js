@@ -38,3 +38,36 @@ exports.getProducts = (req,res) =>{
         res.status(500).json({ message: "Error Occured",error: e });
     }
 }
+
+exports.searchProduct = async  (req,res) =>{
+    
+    const type = req.query.type;
+    const name = req.query.name.replace('%20',' ');
+
+    try{
+
+        const products = await Product.find({type: new RegExp('.*'+type), name: new RegExp('.*'+name) })
+        .sort({created: -1})
+        .then(product =>{
+            res.status(200).json({
+                product
+            })
+        })
+        .catch(error=> {
+            console.log(error)
+            res.status(500).json({
+                error: error
+            })
+        })
+
+
+    }catch(err){
+        console.log(error)
+            res.status(500).json({
+                error: error
+            })
+    }
+
+    
+    
+}

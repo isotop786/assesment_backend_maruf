@@ -39,6 +39,33 @@ exports.getProducts = (req,res) =>{
     }
 }
 
+exports.getSingleProduct = (req,res) =>{
+    try{
+
+        const id = req.params.id
+        
+        Product.find({_id:id})
+        .then(product=> {
+            res.status(200).json({
+                product
+            })
+        })
+        .catch(err=>{
+            console.log("product creation err is: "+err);
+            res.status(500).json({
+                err
+            })
+        })
+
+
+    }catch(err){
+        console.log(" error is: "+err);
+        res.status(500).json({
+            err
+        })
+    }
+}
+
 exports.searchProduct = async  (req,res) =>{
     
     const type = req.query.type;

@@ -4,7 +4,7 @@ const router = express.Router();
 
 // controller
 const {userSignup, userSignin,requireSignin,signout} = require('./controllers/auth.controller');
-const {getProducts,createProduct, searchProduct} = require('./controllers/product.controller');
+const {getProducts,createProduct,getSingleProduct, searchProduct} = require('./controllers/product.controller');
 const {addProduct, removeProduct, getBucketItem} = require('./controllers/bucket.controller');
 
 
@@ -29,6 +29,7 @@ router.post('/auth/signout', signout)
 
 // product routes
 router.get('/products/',requireSignin,getProducts)
+router.get('/products/:id/',requireSignin,getSingleProduct)
 router.post('/products/',requireSignin,createProduct)
 router.post('/products/search',requireSignin,searchProduct)
 

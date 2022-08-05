@@ -12,7 +12,7 @@ exports.addProduct = async (req,res) =>{
     const bucket = new Bucket({
         quantity: req.body.quantity,
         product: req.body.product,
-        user: req["user"],
+        user: req.body.user
     })
 
     bucket.save().then(result =>{

@@ -7,7 +7,7 @@ const expressJWT = require('express-jwt')
 // Signup 
 exports.userSignup = async (req,res)=>{
 
-    const userExists = await User.findOne({email: req.body.loginName})
+    const userExists = await User.findOne({loginName: req.body.loginName})
     if(userExists){
         return res.status(403).json({
             error:'LoginName  is taken'
@@ -25,9 +25,9 @@ exports.userSignup = async (req,res)=>{
 
 // Signin 
 exports.userSignin = async (req,res)=>{
-    const {email, password} = req.body
+    const {loginName, password} = req.body
 
-    User.findOne({email},(err,user)=>{
+    User.findOne({loginName},(err,user)=>{
         if(err || !user){
             return res.status(401).json({
                 error:"User not found."
@@ -36,7 +36,7 @@ exports.userSignin = async (req,res)=>{
 
         if(!user.authenticate(password)){
             return res.status(401).json({
-                error:"Wrong Email or Password"
+                error:"Wrong Credentials"
             })
         }
 
@@ -48,11 +48,11 @@ exports.userSignin = async (req,res)=>{
             maxAge: 24 * 60 *60 *1000
         })
 
-        const {_id, name, email} = user;
+        const {_id, loginName, isAdmin} = user;
 
         return res.json({
             token,
-            user: {_id, name,email}
+            user: {_id, loginName,isAdmin}
         })
 
     });

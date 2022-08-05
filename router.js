@@ -28,14 +28,14 @@ router.post('/auth/signin', userSignin)
 router.post('/auth/signout', signout)
 
 // product routes
-router.get('/products/',AuthMiddleware,getProducts)
-router.post('/products/',AuthMiddleware,createProduct)
-router.post('/products/search',AuthMiddleware,searchProduct)
+router.get('/products/',requireSignin,getProducts)
+router.post('/products/',requireSignin,createProduct)
+router.post('/products/search',requireSignin,searchProduct)
 
 // bucket routes
-router.get('/buckets/',AuthMiddleware,getBucketItem)
-router.post('/buckets/',AuthMiddleware,addProduct)
-router.delete('/buckets/:id',AuthMiddleware,addProduct)
+router.get('/buckets/',requireSignin,getBucketItem)
+router.post('/buckets/',requireSignin,addProduct)
+router.delete('/buckets/:id',requireSignin,addProduct)
 
 
 

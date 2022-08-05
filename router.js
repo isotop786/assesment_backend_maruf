@@ -5,7 +5,7 @@ const router = express.Router();
 // controller
 const {userSignup, userSignin,requireSignin,signout} = require('./controllers/auth.controller');
 const {getProducts,createProduct,getSingleProduct, searchProduct} = require('./controllers/product.controller');
-const {addProduct, removeProduct, getBucketItem} = require('./controllers/bucket.controller');
+const {addProduct, removeProduct, getBucketItem, removeAllProduct} = require('./controllers/bucket.controller');
 
 
 // validator
@@ -36,7 +36,8 @@ router.post('/products/search',requireSignin,searchProduct)
 // bucket routes
 router.get('/buckets/',requireSignin,getBucketItem)
 router.post('/buckets/',requireSignin,addProduct)
-router.delete('/buckets/:id',requireSignin,addProduct)
+router.delete('/buckets/:id',requireSignin,removeProduct)
+router.delete('/bucketsall/',requireSignin,removeAllProduct)
 
 
 

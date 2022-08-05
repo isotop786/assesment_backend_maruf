@@ -23,7 +23,7 @@ exports.addProduct = async (req,res) =>{
 }
 
 exports.removeProduct = async (req,res)=>{
-    const id = req.query.id;
+    const id = req.params.id;
 
     const item = await Bucket.findOne({_id: id})
 
@@ -46,6 +46,17 @@ exports.removeProduct = async (req,res)=>{
             error:'Item Not Found'
         })
     }
+}
+
+exports.removeAllProduct =  (req,res)=>{
+    Bucket.remove({}, function(err) {
+        if (err) {
+            console.log(err)
+        } else {
+            res.end('success');
+        }
+    }
+);
 }
 
 exports.getBucketItem = (req,res) =>{

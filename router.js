@@ -31,7 +31,7 @@ router.post('/auth/signout', signout)
 router.get('/products/',requireSignin,getProducts)
 router.get('/products/:id/',requireSignin,getSingleProduct)
 router.post('/products/',requireSignin,createProduct)
-router.post('/products/search',requireSignin,searchProduct)
+router.post('/products/search',searchProduct)
 
 // bucket routes
 router.get('/buckets/',requireSignin,getBucketItem)

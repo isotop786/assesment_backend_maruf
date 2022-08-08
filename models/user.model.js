@@ -8,19 +8,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim:true,
         unique: true // `loginName` must be unique
-
     },
 
     hashed_password:{
         type:String,
         required:true,
         trim:true,
-        
-    },
-
-    isAdmin:{
-        type: Boolean,
-        default: false
     },
 
     salt: String,

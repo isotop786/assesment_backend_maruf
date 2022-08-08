@@ -10,17 +10,16 @@ const bucketSchema = new mongoose.Schema({
     },
 
     product:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, // Foreign key, which repreasent Product
         ref: 'Product',
         required: true
     },
 
     user:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId, // Foreign key, which repreasent User
         ref:'User',
         required: true
     },
-
 
     created:{
         type:Date,

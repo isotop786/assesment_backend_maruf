@@ -6,7 +6,6 @@ const productSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-
     type:{
         type: String,
         required: [true, 'Please provide type'],
@@ -26,7 +25,6 @@ const productSchema = new mongoose.Schema({
         type: String, 
         required: false,
     },
-
 
     created:{
         type:Date,

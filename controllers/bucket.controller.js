@@ -63,6 +63,8 @@ exports.getBucketItem = (req,res) =>{
     try{
         const items = Bucket.find()
         .sort({created: -1})
+        .populate('product') // Populating foreign table "Product"
+        .populate('user') //  Populationg foreign table "User"
         .then(item=> {
             res.status(200).json({
                 item
